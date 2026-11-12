@@ -1,0 +1,49 @@
+# Environment / secrets
+.env
+.env.*
+!.env.example
+
+# Python caches
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.eggs/
+*.egg
+
+# Virtualenvs
+.venv/
+venv/
+
+# Django migrations (keep package init only)
+**/migrations/**
+!**/migrations/
+!**/migrations/__init__.py
+
+# Tests / caches / coverage / snapshots
+.pytest_cache/
+.tox/
+.nox/
+.coverage
+.coverage.*
+htmlcov/
+coverage.xml
+*.cover
+.hypothesis/
+.cache/
+**/__snapshots__/
+**/snapshots/
+
+# Databases
+*.sqlite3
+*.sqlite3-journal
+*.db
+*.sql
+db/
+**/db.sqlite3
+
+# Media / static / local runtime
+media/
+staticfiles/
+*.log
+.DS_Store
