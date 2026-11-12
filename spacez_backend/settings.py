@@ -126,7 +126,16 @@ if DEBUG:
         r"^http://127\.0\.0\.1:\d+$",
     ]
 
-CSRF_TRUSTED_ORIGINS = CORS_ALLOWED_ORIGINS
+CSRF_TRUSTED_ORIGINS = env_list(
+    "CSRF_TRUSTED_ORIGINS",
+    ",".join(CORS_ALLOWED_ORIGINS),
+)
+
+# Reverse-proxy / TLS termination (nginx)
+SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
+USE_X_FORWARDED_HOST = env_bool("USE_X_FORWARDED_HOST", True)
+SESSION_COOKIE_SECURE = not DEBUG
+CSRF_COOKIE_SECURE = not DEBUG
 
 FRONTEND_URL = os.getenv("FRONTEND_URL", "http://localhost:8080").rstrip("/")
 DEFAULT_MEMBER_PASSWORD = os.getenv("DEFAULT_MEMBER_PASSWORD", "spacez123")
